@@ -50,3 +50,8 @@ jobs:
           MONGO_DB_NAME: ${{ secrets.MONGO_DB_NAME }}
           MONGO_DB_URI: ${{ secrets.MONGO_DB_URI }}
           T6_BASE_URL: ${{ secrets.T6_BASE_URL }}
+
+      - name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          retain_days: 30
