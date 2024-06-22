@@ -14,10 +14,6 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@master
 
-      - uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE }}
-
       # from: https://github.com/actions/setup-node
       - name: Setup node
         uses: actions/setup-node@master
