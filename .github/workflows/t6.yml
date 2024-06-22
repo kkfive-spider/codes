@@ -1,0 +1,29 @@
+name: T6
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'
+  workflow_dispatch:
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+
+      - name: Set node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: run
+        run: |
+          export TZ='Asia/Shanghai'
+          npm run cron_t6
+        env:
+          MONGO_DB_NAME: ${{ secrets.MONGO_DB_NAME }}
+          MONGO_DB_URI: ${{ secrets.MONGO_DB_URI }}
+          T6_BASE_URL: ${{ secrets.T6_BASE_URL }}
